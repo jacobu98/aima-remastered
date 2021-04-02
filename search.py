@@ -227,8 +227,11 @@ def depth_first_graph_search(problem):
     explored = set()
     while frontier:
         node = frontier.pop()
-        if problem.goal_test(node.state):
-            return node
+        for g in problem.goal:
+          if node.state == g:
+            return nodo
+        #if problem.goal_test(node.state):
+        #    return node
         explored.add(node.state)
         frontier.extend(child for child in node.expand(problem)
                         if child.state not in explored and child not in frontier)
